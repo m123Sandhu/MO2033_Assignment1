@@ -1,8 +1,4 @@
 using System;
-using MO2033_Assignment1;
-using System.Diagnostics.Contracts;
-using System.Diagnostics.Metrics;
-using System.Threading.Tasks;
 
 namespace MO2033_Assignment1
 {
@@ -10,41 +6,38 @@ namespace MO2033_Assignment1
     {
         static void Main(string[] args)
         {
-            // Numeric Comparison
-            Console.WriteLine("Please enter your age:");
-            int age;
+            string[] fruits = {"apple", "banana", "cherry", "date", "elderberry"};
 
-            // Ensure the input is a valid integer
-            while (!int.TryParse(Console.ReadLine(), out age))
+            Console.WriteLine("List of fruits:");
+            for (int i = 0; i < fruits.Length; i++)
             {
-                Console.WriteLine("Invalid input. Please enter a valid number for your age:");
+                Console.WriteLine($"{i + 1}. {fruits[i]}");
             }
 
-            if (age >= 18)
+            // Let's do something interesting: ask the user for their favorite fruit and inform if it's on the list
+            Console.WriteLine("\nWhich of the above fruits is your favorite?");
+            string userFruit = Console.ReadLine().ToLower();
+
+            bool isFruitFound = false;
+            for (int i = 0; i < fruits.Length; i++)
             {
-                Console.WriteLine("You are an adult.");
+                if (fruits[i] == userFruit)
+                {
+                    isFruitFound = true;
+                    break;
+                }
+            }
+
+            if (isFruitFound)
+            {
+                Console.WriteLine($"Great choice! {userFruit} is on the list.");
             }
             else
             {
-                Console.WriteLine("You are a minor.");
-            }
-
-            // String Comparison
-            Console.WriteLine("\nPlease enter your favorite fruit (e.g., apple, banana):");
-            string favoriteFruit = Console.ReadLine().ToLower(); // Convert input to lowercase for easy comparison
-
-            if (favoriteFruit == "apple")
-            {
-                Console.WriteLine("You love apples!");
-            }
-            else if (favoriteFruit == "banana")
-            {
-                Console.WriteLine("Bananas are great!");
-            }
-            else
-            {
-                Console.WriteLine($"So you like {favoriteFruit}? Interesting choice!");
+                Console.WriteLine($"Sorry, {userFruit} is not on our list. You have a unique taste!");
             }
         }
     }
 }
+
+

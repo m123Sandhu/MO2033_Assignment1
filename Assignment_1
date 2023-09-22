@@ -6,38 +6,35 @@ namespace MO2033_Assignment1
     {
         static void Main(string[] args)
         {
-            string[] fruits = {"apple", "banana", "cherry", "date", "elderberry"};
+            string constructedWord = "";
+            Console.WriteLine("Let's build a word! Enter characters one by one.");
+            Console.WriteLine("Enter '!' to stop and see the constructed word.");
 
-            Console.WriteLine("List of fruits:");
-            for (int i = 0; i < fruits.Length; i++)
+            while (true)
             {
-                Console.WriteLine($"{i + 1}. {fruits[i]}");
-            }
+                Console.WriteLine("Enter a character:");
+                char userInput = Console.ReadKey().KeyChar; // Read a single character from user input
 
-            // Let's do something interesting: ask the user for their favorite fruit and inform if it's on the list
-            Console.WriteLine("\nWhich of the above fruits is your favorite?");
-            string userFruit = Console.ReadLine().ToLower();
-
-            bool isFruitFound = false;
-            for (int i = 0; i < fruits.Length; i++)
-            {
-                if (fruits[i] == userFruit)
+                if (userInput == '!')
                 {
-                    isFruitFound = true;
+                    Console.WriteLine("\nStopping word construction.");
                     break;
                 }
+
+                constructedWord += userInput; // Add the character to our word
+
+                Console.WriteLine($"\nCurrent word: {constructedWord}");
             }
 
-            if (isFruitFound)
+            if (constructedWord.Length > 0)
             {
-                Console.WriteLine($"Great choice! {userFruit} is on the list.");
+                Console.WriteLine($"Your constructed word is: {constructedWord}");
             }
             else
             {
-                Console.WriteLine($"Sorry, {userFruit} is not on our list. You have a unique taste!");
+                Console.WriteLine("You didn't add any characters to the word.");
             }
         }
     }
 }
-
 
